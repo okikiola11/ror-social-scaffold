@@ -1,5 +1,8 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% unless @user == current_user %>
+    <%= link_to 'Invite to Friendship', "friendship/create/#{@user.id}", method: :post, class: 'profile-link' %>
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -7,3 +10,9 @@
     </ul>
   </article>
 </section>
+<p>Friend requests received from:</p>
+<% current_user.friend_request_received.each do |frr| %>
+  <ul>
+    <li><%= frr.name %><%= link_to 'Accept', "friendship/accept/#{@user.id}", method: :patch, class: 'profile-link' %><%= link_to 'Reject' %></li>
+  </ul>
+<% end %>
