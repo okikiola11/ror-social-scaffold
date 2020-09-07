@@ -16,19 +16,12 @@ class FriendshipsController < ApplicationController
     end
   end
 
-  def destroy; end
-
   def accept
-    @friendship = Friendship.find(params[:id])
-    @friendship.update(confirmed: true)
-    if @friendship.save
-      flash[:notice] = "You are now friends"
-      redirect_to user_path(current_user)
-    else
-      flash[:alert] = "Something went wrong ..."
-      redirect_to user_path(current_user)
-    end
+    current_user.confirm_friend(User.find(params[:id]))
+    redirect_to users_path
   end
 
   def reject; end
+
+  def destroy; end
 end

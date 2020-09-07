@@ -13,6 +13,10 @@
 <p>Friend requests received from:</p>
 <% current_user.friend_request_received.each do |frr| %>
   <ul>
-    <li><%= frr.name %><%= link_to 'Accept', "friendship/accept/#{@user.id}", method: :patch, class: 'profile-link' %><%= link_to 'Reject' %></li>
+    <li>
+      <%= frr.name %>
+      <%= link_to 'Accept', "friendship/accept/#{frr.id}", method: :post, class: 'profile-link' %>
+      <%= link_to 'Reject' %>
+    </li>
   </ul>
 <% end %>
