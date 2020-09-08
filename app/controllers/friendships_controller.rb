@@ -17,11 +17,18 @@ class FriendshipsController < ApplicationController
   end
 
   def accept
-    current_user.confirm_friend(User.find(params[:id]))
-    redirect_to users_path
+    user = User.find(params[:id])
+    current_user.confirm_friend(user)
+    redirect_to users_path, notice: "You are now friend with #{user.name}"
   end
 
-  def reject; end
+  def reject
+    # friendship = Friendship.find_by(user_id: params[:id], friend_id: current_user.id, confirmed: false)
+    # friendship.destroy
+    user = User.find(params[:id])
+    current_user.reject_friend(user)
+    redirect_to users_path, notice: "You rejected #{user.name}'s friend invitation."
+  end
 
   def destroy; end
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/friendship/create/:id', to: 'friendships#create'
   post 'users/friendship/create/:id', to: 'friendships#create'
   post 'users/friendship/accept/:id', to: 'friendships#accept'
+  post 'users/friendship/reject/:id', to: 'friendships#reject'
   resources :friendships
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
