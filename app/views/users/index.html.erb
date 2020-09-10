@@ -6,7 +6,9 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <% unless user == current_user %>
-            <%= link_to 'Invite to Friendship', "friendship/create/#{user.id}", method: :post, class: 'profile-link' %>
+            <% unless current_user.friend?(user) || current_user.friend_request_sent.include?(user) || current_user.friend_request_received.include?(user) %>
+              <%= link_to 'Invite to Friendship', "friendship/create/#{user.id}", method: :post, class: 'profile-link' %>
+            <% end %>
           <% end %>
         </span>
       </li>
