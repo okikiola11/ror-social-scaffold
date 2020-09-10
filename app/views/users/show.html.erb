@@ -1,10 +1,6 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
-  <% unless @user == current_user %>
-    <% unless current_user.friend?(@user) || current_user.friend_request_sent.include?(@user) || current_user.friend_request_received.include?(@user) %>
-      <%= link_to 'Invite to Friendship', "friendship/create/#{@user.id}", method: :post, class: 'profile-link' %>
-    <% end %>
-  <% end %>
+  <%= invite_friend(@user) %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -12,15 +8,4 @@
     </ul>
   </article>
 </section>
-<% if current_user == @user %>
-<p>Friend requests received from:</p><br>
-  <% current_user.friend_request_received.each do |frr| %>
-    <ul>
-      <li>
-        <strong><%= frr.name %></strong>
-        <button><%= link_to 'Accept', "friendship/accept/#{frr.id}", method: :post %></button>
-        <button><%= link_to 'Reject', "friendship/reject/#{frr.id}", method: :post %></button>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
+<%= friendship_options(@user) %>
