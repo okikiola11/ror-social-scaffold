@@ -6,6 +6,7 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
           <%= invite_friend(user) %>
+          <%= friendship_options_index(user) %>
         </span>
       </li>
     <% end %>
