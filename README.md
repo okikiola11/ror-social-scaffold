@@ -2,6 +2,7 @@
 
 > This repo includes intial code for social media app with basic styling of the ERD, a relationship diagram which signifies how the different entities and the various entity keys are related. It is contained in the doc folder. 
 
+> In the milestone - friendship v1, a working version of the friendship model was created with all the required assocaitions. Here, a user can see the list of all other users and can send or receive invitations for friendship. A user can also choose to accept or reject the received friendship invitations from other users.
 ## Built With
 
 - Ruby v2.7.0
