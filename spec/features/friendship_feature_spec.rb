@@ -22,7 +22,7 @@ RSpec.describe 'Send Friend Invitation', type: :feature do
     click_on 'Sign up'
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
-  
+
   scenario 'can see list of all users' do
     click_on 'All users'
     expect(page).to have_content('Invite to Friendship')
@@ -41,10 +41,10 @@ RSpec.describe 'Send Friend Invitation', type: :feature do
 
   scenario 'can see friendhsip invitations from other users' do
     click_on 'All users'
-    first(:link, 'See Profile').click
+    page.all('a', text: 'See Profile')[1].click
     expect(page).to have_content('Friend requests received from:')
   end
-  
+
   scenario 'can see options for accept or reject friendship invitation' do
     click_on 'All users'
     click_on 'Invite to Friendship'
@@ -54,7 +54,7 @@ RSpec.describe 'Send Friend Invitation', type: :feature do
     fill_in 'Password', with: 'asdfgh'
     click_on 'Log in'
     click_on 'All users'
-    page.all('a', text: 'See Profile')[1].click
+    page.all('a', text: 'See Profile')[0].click
     expect(page).to have_button('Accept')
     expect(page).to have_button('Reject')
   end
@@ -68,7 +68,7 @@ RSpec.describe 'Send Friend Invitation', type: :feature do
     fill_in 'Password', with: 'asdfgh'
     click_on 'Log in'
     click_on 'All users'
-    page.all('a', text: 'See Profile')[1].click
+    page.all('a', text: 'See Profile')[0].click
     page.all('a', text: 'Accept')[0].click
     expect(page).to have_content('You are now friend with')
   end
@@ -82,7 +82,7 @@ RSpec.describe 'Send Friend Invitation', type: :feature do
     fill_in 'Password', with: 'asdfgh'
     click_on 'Log in'
     click_on 'All users'
-    page.all('a', text: 'See Profile')[1].click
+    page.all('a', text: 'See Profile')[0].click
     page.all('a', text: 'Reject')[0].click
     expect(page).to have_content('You rejected')
   end

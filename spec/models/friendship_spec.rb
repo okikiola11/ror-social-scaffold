@@ -12,11 +12,11 @@ RSpec.describe Friendship, type: :model do
   end
 
   scenario 'should create an inverse friendship' do
-    expect(@user2.inverse_friendships).not_to be_empty 
+    expect(@user2.inverse_friendships).not_to be_empty
   end
 
   context 'Active Model Friendship Associations' do
-    it { should belong_to :friend } 
-    it { should belong_to :user } 
+    it { should belong_to :friend }
+    it { should belong_to :user }
   end
 end

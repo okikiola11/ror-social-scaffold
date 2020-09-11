@@ -1,21 +1,21 @@
 module UsersHelper
+  # rubocop:disable Metrics/LineLength
   def invite_friend(user)
-    unless user == current_user
-      unless current_user.friend?(user) || current_user.friend_request_sent.include?(user) || current_user.friend_request_received.include?(user)
-        render 'users/partials/index_partial', user: user
-      end
+    return if user == current_user
+
+    if current_user.friend?(user) || current_user.friend_request_sent.include?(user) || current_user.friend_request_received.include?(user)
+      return
     end
+
+    render 'users/partials/index_partial', user: user
   end
+  # rubocop:enable Metrics/LineLength
 
   def friendship_options_index(user)
-    if current_user.friend_request_received.include?(user)
-      render 'users/partials/index_options', user: user
-    end
+    render 'users/partials/index_options', user: user if current_user.friend_request_received.include?(user)
   end
 
   def friendship_options_show(user)
-    if user == current_user
-      render 'users/partials/show_partial'
-    end
+    render 'users/partials/show_partial' if user == current_user
   end
 end

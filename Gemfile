@@ -41,19 +41,19 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem "database_cleaner"
+  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-  gem "rspec-rails"
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec'
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
+  gem 'rspec'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'webdrivers'
 end

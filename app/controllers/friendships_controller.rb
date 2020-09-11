@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   def new
     @friendships = Friendship.new
   end
@@ -8,12 +7,11 @@ class FriendshipsController < ApplicationController
     user = User.find(params[:id])
     @friendship = Friendship.create(user_id: current_user.id, friend_id: user.id, confirmed: false)
     if @friendship.save
-      flash[:notice] = "Friend request sent successfully!"
-      redirect_to users_path
+      flash[:notice] = 'Friend request sent successfully!'
     else
-      flash[:alert] = "Cannot send friend request"
-      redirect_to users_path
+      flash[:alert] = 'Cannot send friend request'
     end
+    redirect_to users_path
   end
 
   def accept
