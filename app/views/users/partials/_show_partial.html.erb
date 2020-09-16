@@ -1,0 +1,10 @@
+<p>Friend requests received from:</p><br>
+<% current_user.friend_request_received.each do |frr| %>
+  <ul>
+    <li>
+      <strong><%= frr.name %></strong>
+      <button><%= link_to 'Accept', "friendship/accept/#{frr.id}", method: :post %></button>
+      <button><%= link_to 'Reject', "friendship/reject/#{frr.id}", method: :post %></button>
+    </li>
+  </ul>
+<% end %>
